@@ -1,7 +1,7 @@
-const foodSound = new Audio("Public/music/food.mp3");
-const gameOverSound = new Audio("Public/music/gameover.mp3");
-const move = new Audio("Public/music/move.mp3");
-const music = new Audio("Public/music/music.mp3");
+const foodSound = new Audio("music/food.mp3");
+const gameOverSound = new Audio("music/gameover.mp3");
+const move = new Audio("music/move.mp3");
+const music = new Audio("music/music.mp3");
 const speed = 18;
 let snakeMoveDir = { x: 0, y: 0 };
 let lastPaintTime = 0;
