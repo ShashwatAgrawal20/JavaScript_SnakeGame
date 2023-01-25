@@ -2,7 +2,7 @@ const foodSound = new Audio("music/food.mp3");
 const gameOverSound = new Audio("music/gameover.mp3");
 const move = new Audio("music/move.mp3");
 const music = new Audio("music/music.mp3");
-const speed = 18;
+let speed = 7; // will Gradually increasing the speed of the snake movement
 let snakeMoveDir = { x: 0, y: 0 };
 let lastPaintTime = 0;
 let snakeArr = [{ x: 13, y: 15 }];
@@ -44,7 +44,7 @@ const snakeIsCollide = (snake) => {
 };
 
 const gameEngine = () => {
-  music.play();
+  // music.play();
   // updating the snake array & food
 
   if (snakeIsCollide(snakeArr)) {
@@ -55,6 +55,7 @@ const gameEngine = () => {
     snakeArr = [{ x: 13, y: 15 }];
     // music.play();
     score = 0;
+    speed = 7;
     userScore.innerHTML = "Score: " + score;
   }
 
@@ -80,6 +81,11 @@ const gameEngine = () => {
       x: Math.round(a + (b - a) * Math.random()),
       y: Math.round(a + (b - a) * Math.random()),
     };
+    // Incrementing the speed of the snake as the game moves ahead
+    if (score % 3 === 0) {
+      speed++;
+      // console.log(speed);
+    }
   }
 
   // Moving the snake
@@ -130,6 +136,7 @@ window.requestAnimationFrame(main);
 window.addEventListener("keydown", (e) => {
   // snakeMoveDir = { x: 0, y: 1 }; // Start Game
   // move.play();
+  music.play();
   switch (e.key) {
     case "ArrowUp":
       // console.log("ArrowUp");
